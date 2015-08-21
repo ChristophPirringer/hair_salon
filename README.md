@@ -4,6 +4,8 @@
 
 #### By _**{Christoph Pirringer**_
 
+#### _FEEDBACK-Request: I was not able to locate the source for my Key Error when displaying the client-list. I would be grateful if the reason/solution could be included in the feedback._
+
 ## Description
 
 _{This app allows the user to enter different Stylists and Clients into the tables of a database via html-forms. Altering & completely emptying the database entries is also possible.}_
