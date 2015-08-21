@@ -17,13 +17,19 @@ get("/stylists") do
 	erb(:stylists)
 end
 
+get("/clear") do
+	DB.exec("DELETE FROM stylists;")
+	erb(:index)
+end
+
 get("/stylists/new") do
 	erb(:stylist_form)
 end
 
-post("/lists") do
+post("/stylists") do
 	name = params.fetch("name")
 	stylist = Stylist.new({:name => name, :id => nil})
 	stylist.save()
-	erb(:stylist_success)
+  @stylists = Stylist.all()
+	erb(:stylists)
 end
