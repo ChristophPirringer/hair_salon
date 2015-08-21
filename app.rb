@@ -32,7 +32,7 @@ post("/stylists") do
 	stylist = Stylist.new({:name => name, :id => nil})
 	stylist.save()
   @stylists = Stylist.all()
-	erb(:stylist)
+	erb(:stylists)
 end
 
 get("/stylists/:id") do
@@ -52,4 +52,18 @@ post("/clients/:id") do
 	@client = Client.new({:client_name => client_name, :stylist_id => stylist_id})
 	@client.save()
 	erb(:stylist)
+end
+
+delete '/stylists/:id/delete' do
+	@stylist = Stylist.find(params['id'].to_i)
+	@stylist.destroy
+	@stylists = Stylist.all()
+	erb(:stylists)
+end
+
+patch '/stylists/:id' do
+	@stylist = Stylist.find(params['id'].to_i)
+	@stylist.update({name: params['name']})
+	@stylists = Stylist.all()
+	erb(:stylists)
 end

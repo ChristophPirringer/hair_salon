@@ -53,4 +53,23 @@ describe(Stylist) do
 		end
 	end
 
+	describe '#destroy' do
+    it 'it removes stylist from the database' do
+      test_stylist = Stylist.new({:name => "Jean", :id => nil})
+			test_stylist.save()
+      test_stylist.destroy
+      @stylists = Stylist.all
+      expect(@stylists.include?(test_stylist)).to eq false
+    end
+  end
+
+	 describe '#update' do
+    it 'it returns stylist with new name' do
+      test_stylist = Stylist.new({:name => "Jean", :id => nil})
+			test_stylist.save()
+      test_stylist.update({name: 'Blain'})
+      expect(test_stylist.name).to eq "Blain"
+    end
+	end
+
 end
