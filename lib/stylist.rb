@@ -12,7 +12,7 @@ class Stylist
 		returned_stylists.each() do |stylist|
 			name = stylist.fetch("name")
 			id = stylist.fetch("id").to_i
-			stylists.push(Styist.new({:name => name, :id => id}))
+			stylists.push(Stylist.new({:name => name, :id => id}))
 		end
 		stylists
 	end

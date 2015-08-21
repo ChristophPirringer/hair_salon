@@ -15,4 +15,20 @@ describe(Stylist) do
 		end
 	end
 
+	describe("#save") do
+		it("lets you save stylists to the database") do
+      stylist = Stylist.new({:name => "Jean", :id => nil})
+			stylist.save()
+			expect(Stylist.all()).to(eq([stylist]))
+		end
+	end
+
+	describe("#==") do
+		it("is the same stylist if they have the same name") do
+			stylist1 = Stylist.new({:name => "Jaque", :id => nil})
+			stylist2 = Stylist.new({:name => "Jaque", :id => nil})
+			expect(stylist1).to(eq(stylist2))
+		end
+	end
+
 end
