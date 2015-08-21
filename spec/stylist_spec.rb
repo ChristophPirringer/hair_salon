@@ -25,8 +25,8 @@ describe(Stylist) do
 
 	describe("#==") do
 		it("is the same stylist if they have the same name") do
-			stylist1 = Stylist.new({:name => "Jaque", :id => nil})
-			stylist2 = Stylist.new({:name => "Jaque", :id => nil})
+			stylist1 = Stylist.new({:name => "Jean", :id => nil})
+			stylist2 = Stylist.new({:name => "Jean", :id => nil})
 			expect(stylist1).to(eq(stylist2))
 		end
 	end
@@ -38,6 +38,18 @@ describe(Stylist) do
 			test_stylist2 = Stylist.new({:name => "Jaque", :id => nil})
 			test_stylist2.save()
 			expect(Stylist.find(test_stylist2.id())).to(eq(test_stylist2))
+		end
+	end
+
+  	describe("#clients") do
+		it("returns an array of clients for that stylist") do
+			test_stylist = Stylist.new({:name => "Jean", :id => nil})
+			test_stylist.save()
+			test_client = Client.new({:client_name => "Peter", :stylist_id => test_stylist.id()})
+			test_client.save()
+			test_client2 = Client.new({:client_name => "Paul", :stylist_id => test_stylist.id()})
+			test_client2.save()
+			expect(test_stylist.clients()).to(eq([test_client, test_client2]))
 		end
 	end
 
