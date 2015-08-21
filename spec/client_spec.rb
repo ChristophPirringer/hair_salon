@@ -40,4 +40,23 @@ end
 		end
 	end
 
+	describe '#destroy' do
+		it 'it removes clients from the database' do
+			test_client = Client.new({:client_name => "Bob", :stylist_id => 1, :id => nil})
+			test_client.save()
+			test_client.destroy
+			@clients = Client.all
+			expect(@clients.include?(test_client)).to eq false
+		end
+	end
+
+	describe '#update' do
+		it 'it returns clients with new name' do
+			test_client = Client.new({:client_name => "Bob", :stylist_id => 1, :id => nil})
+			test_client.save()
+			test_client.update({client_name: 'Blain'})
+			expect(test_client.client_name).to eq "Blain"
+		end
+	end
+
 end

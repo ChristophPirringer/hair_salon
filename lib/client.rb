@@ -38,4 +38,13 @@ class Client
 		found_client
 	end
 
+	def destroy
+		DB.exec("DELETE FROM clients WHERE id = #{self.id};")
+	end
+
+	def update(attributes)
+		@client_name = attributes.fetch(:client_name, @client_name)
+		DB.exec("UPDATE clients SET client_name = '#{@client_name}' WHERE id = #{self.id};")
+	end
+
 end

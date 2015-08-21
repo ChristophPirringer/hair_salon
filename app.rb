@@ -47,7 +47,7 @@ end
 
 get("/clients/:id") do
 	@stylist = params.fetch("id").to_i()
-	erb(:add_client)
+	erb(:client_form)
 end
 
 post("/clients/:id") do
