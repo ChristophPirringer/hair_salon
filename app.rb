@@ -72,3 +72,8 @@ patch '/stylists/:id' do
 	@stylists = Stylist.all()
 	erb(:stylists)
 end
+
+get("/client/:id") do
+	@client = Client.find(params['id'].to_i)
+	erb(:client)
+end
