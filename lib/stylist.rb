@@ -36,7 +36,7 @@ class Stylist
 		found_stylist
 	end
 
-	define_method(:client) do
+	define_method(:clients) do
 		stylist_clients =[]
 		tasks = DB.exec("SELECT * FROM clients WHERE stylist_id = #{self.id()};")
 		tasks.each() do |client|
