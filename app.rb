@@ -4,6 +4,7 @@ require('./lib/client')
 require('./lib/stylist')
 also_reload('lib/**/*.rb')
 require('pg')
+require('pry')
 
 DB = PG.connect({:dbname => "hair_salon"}) #for use
 # DB = PG.connect({:dbname => "to_salon_test"}) #for testing
@@ -32,4 +33,23 @@ post("/stylists") do
 	stylist.save()
   @stylists = Stylist.all()
 	erb(:stylists)
+end
+
+get("/stylists/:id") do
+	@stylist = Stylist.find(params.fetch("id").to_i())
+	erb(:stylist)
+end
+
+get("/clients/:id") do
+	@stylist = params.fetch("id").to_i()
+	erb(:add_client)
+end
+
+post("/clients/:id") do
+	client_name = params.fetch("client_name")
+	stylist_id = params.fetch("id").to_i()
+	@stylist = Styist.find(stylist_id)
+	@client = Client.new({:client_name => client_name, :stylist_id => stylist_id})
+	@client.save()
+	erb(:stylist)
 end
