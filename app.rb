@@ -18,6 +18,11 @@ get("/stylists") do
 	erb(:stylists)
 end
 
+get("/clients") do
+	@clients = Client.all()
+	erb(:clients)
+end
+
 get("/clear") do
 	DB.exec("DELETE FROM stylists;")
 	erb(:index)

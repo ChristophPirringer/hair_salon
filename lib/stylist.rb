@@ -38,8 +38,8 @@ class Stylist
 
 	define_method(:clients) do
 		stylist_clients =[]
-		tasks = DB.exec("SELECT * FROM clients WHERE stylist_id = #{self.id()};")
-		tasks.each() do |client|
+		clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{self.id()};")
+		client.each() do |client|
 			client_name = client.fetch("client_name")
 			stylist_id = client.fetch("stylist_id").to_i()
 			id = client.fetch('id').to_i()

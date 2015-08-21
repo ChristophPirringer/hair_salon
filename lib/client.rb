@@ -1,9 +1,10 @@
 class Client
-	attr_reader(:client_name, :stylist_id)
+	attr_reader(:client_name, :stylist_id, :id)
 
 	define_method(:initialize) do |attributes|
 		@client_name = attributes.fetch(:client_name)
 		@stylist_id = attributes.fetch(:stylist_id)
+		@id = attributes.fetch(:id)
 	end
 
 	define_singleton_method(:all) do
@@ -12,7 +13,8 @@ class Client
 		returned_clients.each() do |client|
 			client_name = client.fetch("client_name")
 			stylist_id = client.fetch("stylist_id").to_i()
-			clients.push(Client.new({:client_name => client_name, :stylist_id => stylist_id}))
+			id = client.fetch("id").to_i
+			clients.push(Client.new({:client_name => client_name, :stylist_id => stylist_id, :id => id}))
 		end
 		clients
 	end
